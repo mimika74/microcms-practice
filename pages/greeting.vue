@@ -1,14 +1,4 @@
-<script setup lang="ts">
-import { News } from "~~/types/news";
-
-const { params } = useRoute();
-const { data } = await useMicroCMSGetListDetail<News>({
-  endpoint: "news",
-  contentId: Array.isArray(params.id) ? params.id[0] : params.id,
-});
-</script>
-
-<template v-if="data">
+<template>
 <div>
   <v-app>
       <v-app-bar flat>
@@ -69,12 +59,7 @@ const { data } = await useMicroCMSGetListDetail<News>({
           </v-responsive> -->
         </v-container>
       </v-app-bar>
-      <v-main class="bg-grey-lighten-3">
-        <h1>
-          {{ data.title }}
-        </h1>
-        <div v-html="data.content"></div>
-      </v-main>
-    </v-app>
-  </div>
+  </v-app>
+  greeting
+</div>
 </template>
