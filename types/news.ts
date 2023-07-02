@@ -4,6 +4,5 @@ import { Category } from "./category";
 export type News = {
   title?: string;
   content?: string;
-  //eyecatch?: MicroCMSImage;
-  category: (MicroCMSListContent & Category) | null;
+  category: ( MicroCMSListContent & Category ) | null;
 };
