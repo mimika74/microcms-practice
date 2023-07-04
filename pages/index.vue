@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { News } from "~~/types/news";
 import { links } from "~/datas/data";
+import { slides } from "~/datas/data";
 
 const { data } = await useMicroCMSGetList<News>({
   endpoint: "news",
@@ -19,20 +20,43 @@ const { data } = await useMicroCMSGetList<News>({
 <template>
   <Header />
     <v-container>
-      <v-sheet class="slider-area">
-        <div class="slider">
-          <img class="image" src="~~/assets/images/main_01.jpg" />
-          <img class="image" src="~~/assets/images/main_02.jpg" />
-          <img class="image" src="~~/assets/images/main_03.jpg" />
-        </div>
-      </v-sheet>
+      <!-- <v-sheet>
+        <v-slide-group multiple show-arrows>
+          <v-slide-item v-for="n in 8" :key="n">
+            <v-card style="margin: 0 20px 0 0; width: 320px; height: 240px;">
+              <v-img class="white--text align-end" height="120px" src="********.png">
+              <v-card-title>sample title {{ n }}</v-card-title>
+              <v-card-text class="text--primary">
+              {{ n }}番目のカードテキスト
+              </v-card-text>
+            </v-card>
+          <v-slide-item>
+        </v-slide-group>
+      </v-sheet> -->
+      <v-carousel
+        cycle
+        height="600"
+        hide-delimiter-background
+        show-arrows="hover"
+      >
       <div class="heading fadeRightTrigger fadeRight">
         Concept
       </div>
-      <div class="lead fadeRightTrigger fadeRight">
+      <div class="lead fadeRightTrigger fadeRight" color="white">
         いつもそばに<span>ずっと</span>
       </div>
-      <v-sheet class="news fadeLeftTrigger fadeLeft" min-width="60vh" min-height="30vh" rounded="lg">
+        <v-carousel-item
+          v-for="(slide, index) in slides"
+          :key="index"
+          :src="slide.src"
+        >
+          <v-sheet
+            height="100%"
+          >
+          <img :src="`../assets/images/${slide.name}.jpg`"/>
+          </v-sheet>
+        </v-carousel-item>
+              <v-sheet class="news fadeLeftTrigger fadeLeft" min-width="60vh" min-height="30vh" rounded="lg">
         <h3>　お知らせ</h3>
         <v-row v-show="data?.contents.length === 0">
               記事がありません
@@ -43,7 +67,17 @@ const { data } = await useMicroCMSGetList<News>({
             </NuxtLink>
         </v-list-item>
       </v-sheet>
+      </v-carousel>
+
     </v-container>
+      <!-- <v-sheet class="slider-area">
+        <div class="slider">
+          <v-img class="image" src="~~/assets/images/main_01.jpg" />
+          <v-img class="image" src="~~/assets/images/main_02.jpg" />
+          <v-img class="image" src="~~/assets/images/main_03.jpg" />
+        </div>
+      </v-sheet> -->
+
 </template>
 
 <style lang="scss" scoped>
@@ -286,7 +320,7 @@ const { data } = await useMicroCMSGetList<News>({
   font-family: "Alex Brush", cursive;
   font-size: 3.5rem;
   font-weight: normal;
-  color: #182578;
+  color: #DC2314;
   position: absolute;
   top: 100px;
   right: 5%;
