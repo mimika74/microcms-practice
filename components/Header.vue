@@ -12,7 +12,14 @@ import { links } from "~/datas/data"
       >
         <v-img src="/assets/images/Thumbnail-CL-CRC-CR-002.png" width="0%" height="800%"/>
       </v-avatar> -->
-      <div class="font1">CompanyLogo</div>
+      <div class="font1">
+        <h4>
+        <v-btn href="/">
+          CompanyLogo
+        </v-btn>
+        </h4>
+      </div>
+      <v-spacer></v-spacer>
       <v-menu
         open-on-hover
       >

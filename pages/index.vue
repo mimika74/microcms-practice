@@ -19,20 +19,28 @@ const { data } = await useMicroCMSGetList<News>({
 
 <template>
   <div>
+    <v-sheet min-height="20vh"></v-sheet>
+    <v-container>
+      <v-row>
+        <v-col>
+          <div class="fluid-lead">
+            <h1>
+              <span>with prosper</span>
+                <br>
+              <span>with pleasure</span>
+            </h1>
+          </div>
+        </v-col>
+        <v-col>
+            <div class="fluid"></div>
+            <div class="fluid2"></div>
+        </v-col>
+      </v-row>
+    </v-container>
+    <div class="font2">
+        開発事例
+    </div>
       <v-container>
-        <!-- <v-sheet>
-          <v-slide-group multiple show-arrows>
-            <v-slide-item v-for="n in 8" :key="n">
-              <v-card style="margin: 0 20px 0 0; width: 320px; height: 240px;">
-                <v-img class="white--text align-end" height="120px" src="********.png">
-                <v-card-title>sample title {{ n }}</v-card-title>
-                <v-card-text class="text--primary">
-                {{ n }}番目のカードテキスト
-                </v-card-text>
-              </v-card>
-            <v-slide-item>
-          </v-slide-group>
-        </v-sheet> -->
         <v-carousel
           cycle
           height="600"
@@ -42,8 +50,8 @@ const { data } = await useMicroCMSGetList<News>({
         <div class="heading fadeRightTrigger fadeRight">
           Concept
         </div>
-        <div class="lead fadeRightTrigger fadeRight" color="white">
-          いつもそばに<span>ずっと</span>
+        <div class="lead fadeRightTrigger fadeRight">
+          いつもそばにずっと
         </div>
           <v-carousel-item
             v-for="(slide, index) in slides"
@@ -53,36 +61,113 @@ const { data } = await useMicroCMSGetList<News>({
             <v-sheet
               height="100%"
             >
-            <img :src="`../assets/images/${slide.name}.jpg`"/>
+            <img :src="`../assets/images/${slide.name}.jpg`" style="width:1200px;height:auto;"/>
             </v-sheet>
           </v-carousel-item>
-                <v-sheet class="news fadeLeftTrigger fadeLeft" min-width="60vh" min-height="30vh" rounded="lg">
-          <h3>　お知らせ</h3>
-          <v-row v-show="data?.contents.length === 0">
-                記事がありません
-          </v-row>
-          <v-list-item v-for="news in data?.contents" :key="news.id" class='padding'>
-              <NuxtLink :to="`/news/${news.id}`">
-                {{ news.category?.name }}
-              </NuxtLink>
-          </v-list-item>
-        </v-sheet>
         </v-carousel>
       </v-container>
-        <!-- <v-sheet class="slider-area">
-          <div class="slider">
-            <v-img class="image" src="~~/assets/images/main_01.jpg" />
-            <v-img class="image" src="~~/assets/images/main_02.jpg" />
-            <v-img class="image" src="~~/assets/images/main_03.jpg" />
-          </div>
-        </v-sheet> -->
-    <div class="font2">
-        開発事例
-    </div>
+      <v-sheet class="news fadeLeftTrigger fadeLeft" min-width="60vh" min-height="30vh" rounded="lg">
+        <h3>　お知らせ</h3>
+        <v-row v-show="data?.contents.length === 0">
+              記事がありません
+        </v-row>
+        <v-list-item v-for="news in data?.contents" :key="news.id" class='padding'>
+            <NuxtLink :to="`/news/${news.id}`">
+              {{ news.category?.name }}
+            </NuxtLink>
+        </v-list-item>
+      </v-sheet>
   </div>
 </template>
 
 <style lang="scss" scoped>
+.fluid-lead {
+  font-family: sans-serif;
+  letter-spacing: 1em;
+  padding-top: 40px;
+  animation-name: smoothAnime;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  transform-origin: left;
+  opacity: 0;
+}
+
+@keyframes smoothAnime {
+  from {
+    transform: translate3d(0, 100%, 0) skewY(12deg);
+    opacity: 0;
+  }
+  to {
+    transform: translate3d(0, 0, 0) skewY(0);
+    opacity: 1;
+  }
+}
+
+.fluid {
+  width: 40vh;
+  height: 40vh;
+  background: #b22222;
+  animation: fluidrotate 30s ease 0s infinite;
+  z-index: 10;
+  text-align: right;
+};
+
+@keyframes fluidrotate {
+  0%, 100% {
+    border-radius: 63% 37% 54% 46%/55% 48% 52% 45%;
+  }
+  14% {
+    border-radius: 40% 60% 54% 46%/49% 60% 40% 51%;
+  }
+  28% {
+    border-radius: 54% 46% 38% 62%/49% 70% 30% 51%;
+  }
+  42% {
+    border-radius: 61% 39% 67% 33%/70% 50% 50% 30%;
+  }
+  70% {
+    border-radius: 50% 50% 34% 66%/56% 68% 32% 44%;
+  }
+  84% {
+    border-radius: 46% 54% 50% 50%/35% 61% 39% 65%;
+  }
+}
+
+.fluid2 {
+  width: 30vh;
+  height: 30vh;
+  background: #333631;
+  animation: fluidrotate2 30s ease 0s infinite;
+  z-index: 9;
+  margin: -170px 140px 0;
+  text-align: right;
+};
+
+@keyframes fluidrotate2 {
+  0%, 100% {
+    border-radius: 46% 54% 50% 50%/35% 61% 39% 65%;
+  }
+  14% {
+    border-radius: 63% 37% 54% 46%/55% 48% 52% 45%;
+  }
+  28% {
+    border-radius: 40% 60% 54% 46%/49% 60% 40% 51%;
+  }
+  42% {
+    border-radius: 54% 46% 38% 62%/49% 70% 30% 51%;
+  }
+  70% {
+    border-radius: 61% 39% 67% 33%/70% 50% 50% 30%;
+  }
+  84% {
+    border-radius: 50% 50% 34% 66%/56% 68% 32% 44%;
+  }
+};
+
+.fluid-group {
+  height: 60vh;
+}
+
 .font1 {
   font-family:"UD デジタル 教科書体 N-R", "BIZ UDゴシック Regular", "Hiragino Kaku Gothic ProN", "ascii";
 }
@@ -246,53 +331,53 @@ const { data } = await useMicroCMSGetList<News>({
   height: 100vh;
 };
 
-.slider-area {
-  width: 100%;
-  height: 70vh;
-  position: relative;
-  top: 0;
-  //left: 5%;
-  z-index: 3;
-};
+// .slider-area {
+//   width: 100%;
+//   height: 70vh;
+//   position: relative;
+//   top: 0;
+//   //left: 5%;
+//   z-index: 3;
+// };
 
-.slider {
-  overflow: hidden!important;
-  position: relative;
-	max-width: 100%;
-	height: 700px;
-};
+// .slider {
+//   overflow: hidden!important;
+//   position: relative;
+// 	max-width: 100%;
+// 	height: 700px;
+// };
 
-.image {
-	position: absolute;
-	width: 70%;
-  top: 5%;
-  left: 15%;
-	opacity: 0;
-	animation: change-img-anim 15s infinite;
-};
+// .image {
+// 	position: absolute;
+// 	width: 70%;
+//   top: 5%;
+//   left: 15%;
+// 	opacity: 0;
+// 	animation: change-img-anim 15s infinite;
+// };
 
-.image:nth-of-type(1) {
-	animation-delay: 1s;
-};
-.image:nth-of-type(2) {
-	animation-delay: 5s;
-};
-.image:nth-of-type(3) {
-	animation-delay: 10s;
-};
+// .image:nth-of-type(1) {
+// 	animation-delay: 1s;
+// };
+// .image:nth-of-type(2) {
+// 	animation-delay: 5s;
+// };
+// .image:nth-of-type(3) {
+// 	animation-delay: 10s;
+// };
 
-@keyframes change-img-anim {
-	0% { opacity: 0;}
-	10% { opacity: 1;}
-	90% { opacity: 1;}
-	100% { opacity: 0;}
-};
+// @keyframes change-img-anim {
+// 	0% { opacity: 0;}
+// 	10% { opacity: 1;}
+// 	90% { opacity: 1;}
+// 	100% { opacity: 0;}
+// };
 
 .heading {
   font-family: "Alex Brush", cursive;
   font-size: 3.5rem;
   font-weight: normal;
-  color: #DC2314;
+  color: #b22222;
   position: absolute;
   top: 100px;
   right: 5%;
@@ -306,6 +391,7 @@ const { data } = await useMicroCMSGetList<News>({
   top: 320px;
   right: 9%;
   font-size: 1.6rem;
+  color: white;
   letter-spacing: 0.2em;
   line-height: 1.6;
   writing-mode: vertical-rl;
@@ -313,10 +399,10 @@ const { data } = await useMicroCMSGetList<News>({
   z-index: 3;
 };
 
-span {
-  display: block;
-  padding: 100px 0 0 0;
-};
+// span {
+//   display: block;
+//   padding: 100px 0 0 0;
+// };
 
 .news {
   font-family: "Noto Serif JP", serif;
