@@ -18,106 +18,78 @@ const { data } = await useMicroCMSGetList<News>({
 </script>
 
 <template>
-  <Header />
-    <v-container>
-      <!-- <v-sheet>
-        <v-slide-group multiple show-arrows>
-          <v-slide-item v-for="n in 8" :key="n">
-            <v-card style="margin: 0 20px 0 0; width: 320px; height: 240px;">
-              <v-img class="white--text align-end" height="120px" src="********.png">
-              <v-card-title>sample title {{ n }}</v-card-title>
-              <v-card-text class="text--primary">
-              {{ n }}番目のカードテキスト
-              </v-card-text>
-            </v-card>
-          <v-slide-item>
-        </v-slide-group>
-      </v-sheet> -->
-      <v-carousel
-        cycle
-        height="600"
-        hide-delimiter-background
-        show-arrows="hover"
-      >
-      <div class="heading fadeRightTrigger fadeRight">
-        Concept
-      </div>
-      <div class="lead fadeRightTrigger fadeRight" color="white">
-        いつもそばに<span>ずっと</span>
-      </div>
-        <v-carousel-item
-          v-for="(slide, index) in slides"
-          :key="index"
-          :src="slide.src"
+  <div>
+      <v-container>
+        <!-- <v-sheet>
+          <v-slide-group multiple show-arrows>
+            <v-slide-item v-for="n in 8" :key="n">
+              <v-card style="margin: 0 20px 0 0; width: 320px; height: 240px;">
+                <v-img class="white--text align-end" height="120px" src="********.png">
+                <v-card-title>sample title {{ n }}</v-card-title>
+                <v-card-text class="text--primary">
+                {{ n }}番目のカードテキスト
+                </v-card-text>
+              </v-card>
+            <v-slide-item>
+          </v-slide-group>
+        </v-sheet> -->
+        <v-carousel
+          cycle
+          height="600"
+          hide-delimiter-background
+          show-arrows="hover"
         >
-          <v-sheet
-            height="100%"
-          >
-          <img :src="`../assets/images/${slide.name}.jpg`"/>
-          </v-sheet>
-        </v-carousel-item>
-              <v-sheet class="news fadeLeftTrigger fadeLeft" min-width="60vh" min-height="30vh" rounded="lg">
-        <h3>　お知らせ</h3>
-        <v-row v-show="data?.contents.length === 0">
-              記事がありません
-        </v-row>
-        <v-list-item v-for="news in data?.contents" :key="news.id" class='padding'>
-            <NuxtLink :to="`/news/${news.id}`">
-              {{ news.category?.name }}
-            </NuxtLink>
-        </v-list-item>
-      </v-sheet>
-      </v-carousel>
-
-    </v-container>
-      <!-- <v-sheet class="slider-area">
-        <div class="slider">
-          <v-img class="image" src="~~/assets/images/main_01.jpg" />
-          <v-img class="image" src="~~/assets/images/main_02.jpg" />
-          <v-img class="image" src="~~/assets/images/main_03.jpg" />
+        <div class="heading fadeRightTrigger fadeRight">
+          Concept
         </div>
-      </v-sheet> -->
-
+        <div class="lead fadeRightTrigger fadeRight" color="white">
+          いつもそばに<span>ずっと</span>
+        </div>
+          <v-carousel-item
+            v-for="(slide, index) in slides"
+            :key="index"
+            :src="slide.src"
+          >
+            <v-sheet
+              height="100%"
+            >
+            <img :src="`../assets/images/${slide.name}.jpg`"/>
+            </v-sheet>
+          </v-carousel-item>
+                <v-sheet class="news fadeLeftTrigger fadeLeft" min-width="60vh" min-height="30vh" rounded="lg">
+          <h3>　お知らせ</h3>
+          <v-row v-show="data?.contents.length === 0">
+                記事がありません
+          </v-row>
+          <v-list-item v-for="news in data?.contents" :key="news.id" class='padding'>
+              <NuxtLink :to="`/news/${news.id}`">
+                {{ news.category?.name }}
+              </NuxtLink>
+          </v-list-item>
+        </v-sheet>
+        </v-carousel>
+      </v-container>
+        <!-- <v-sheet class="slider-area">
+          <div class="slider">
+            <v-img class="image" src="~~/assets/images/main_01.jpg" />
+            <v-img class="image" src="~~/assets/images/main_02.jpg" />
+            <v-img class="image" src="~~/assets/images/main_03.jpg" />
+          </div>
+        </v-sheet> -->
+    <div class="font2">
+        開発事例
+    </div>
+  </div>
 </template>
 
 <style lang="scss" scoped>
-// .b {
-//     display: block;
-// };
+.font1 {
+  font-family:"UD デジタル 教科書体 N-R", "BIZ UDゴシック Regular", "Hiragino Kaku Gothic ProN", "ascii";
+}
 
-// .c {
-//   //display: none;
-//   position: absolute;
-//   top: 70px;
-//   width: 100px;
-//   height: 100px;
-//   left: 70px;
-// };
-// .d {
-//   //display: none;
-//   position: absolute;
-//   top: 70px;
-//   width:100px;
-//   height: 100px;
-//   left: 70px;
-// };
-
-// .c {
-//  display: none;
-// };
-
-// .b:hover .c {
-//   background-color: pink;
-//   color: #444;
-//   display: block;
-// };
-
-// .b:hover .c {
-//   background-color: blue;
-//   color: #444;
-//   display: block;
-// };
-
+.font2 {
+  font-family: 'Rampart One', cursive;
+}
 
 .padding {
   margin-top: 20px;
