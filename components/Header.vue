@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { links } from "~/datas/data"
+import { links, links2 } from "~/datas/data"
 </script>
 
 <template>
@@ -53,10 +53,23 @@ import { links } from "~/datas/data"
       <div>
         <v-btn>
           採用情報
+          <v-menu activator="parent" open-on-hover>
+            <v-list>
+              <v-list-item
+                v-for="(submenu, index) in links2"
+                :key="index"
+                :to="submenu.path"
+              >
+                <v-list-item-title>
+                  {{ submenu.title }}
+                </v-list-item-title>
+              </v-list-item>
+            </v-list>
+          </v-menu>
         </v-btn>
       </div>
       <div>
-        <v-btn>
+        <v-btn href="/contact">
           お問い合わせ
         </v-btn>
       </div>
