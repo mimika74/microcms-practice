@@ -6,12 +6,16 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "deploy": "yarn build && firebase deploy --only functions"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@nuxtjs/google-fonts": "3.0.0-1",
     "@types/node": "^20.3.1",
+    "firebase-admin": "^11.10.1",
+    "firebase-functions": "^4.4.1",
+    "firebase-functions-test": "^3.1.0",
     "netlify-cli": "^15.6.0",
     "nuxt": "^3.5.2",
     "sass": "^1.63.6",
@@ -23,6 +27,8 @@
     "@mdi/font": "^7.2.96",
     "@vuetify/vite-plugin": "^1.0.0-alpha.11",
     "dotenv": "^16.3.1",
+    "firebase": "^10.0.0",
+    "firebase-tools": "^12.4.4",
     "microcms-js-sdk": "^2.5.0",
     "nuxt-microcms-module": "^3.0.2",
     "vuetify": "^3.0.0"
