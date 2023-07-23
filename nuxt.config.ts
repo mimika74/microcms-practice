@@ -22,6 +22,8 @@ export default defineNuxtConfig({
       formEmail: process.env.NUXT_FORM_EMAIL_KEY,
       formCompany: process.env.NUXT_FORM_COMPANY_KEY,
       formDetail: process.env.NUXT_FORM_DETAIL_KEY,
+      formSelect: process.env.NUXT_FORM_SELECT_KEY,
+      formPrivacy: process.env.NUXT_FORM_PRIVACY_KEY,
       firebaseConfig: {
         apiKey: process.env.NUXT_FIREBASE_API_KEY,
         authDomain: process.env.NUXT_FIREBASE_AUTH_DOMAIN,
