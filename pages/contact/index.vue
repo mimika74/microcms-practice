@@ -52,7 +52,7 @@ const submitForm = async() => {
       body: formData,
       referrerPolicy: "no-referrer",
     })
-    //navigateTo('/contact/thanks');
+    navigateTo('/contact/thanks');
 };
 
 const submitTO = () => {

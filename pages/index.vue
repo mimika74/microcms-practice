@@ -15,69 +15,273 @@ const { data } = await useMicroCMSGetList<News>({
 // const isOpen = () => {
 //     open.value = !open.value
 // };
+
+// 　同時に発火する場合に使う
+// const list3 = [".fadeInTop", ".fadeInNews"];
+// const targets = gsap.utils.toArray([list3])
+// onMounted(() => targets.forEach((target: any) => { 
+//                 gsap.from(target, {
+//                 scrollTrigger: {
+//                     trigger: target
+//                 }, // .boxがビューポート内に入った時にアニメーションが開始。
+//                 duration: 1.5,
+//                 autoAlpha: 0,
+//                 y: 100,
+//                 })
+//             })
+//         )
+
+onMounted(() => { gsap.from(".fadeInTop", {
+                        scrollTrigger: ".fadeInTop", // .boxがビューポート内に入った時にアニメーションが開始。
+                        duration: 1.5,
+                        autoAlpha: 0,
+                        y: 100,
+                        })
+                    });
+onMounted(() => { gsap.from(".fadeInNews", {
+    scrollTrigger: ".fadeInNews", // .boxがビューポート内に入った時にアニメーションが開始。
+    duration: 1,
+    autoAlpha: 0,
+    y: 30,
+    })
+});
+
+onMounted(() => { gsap.from(".fadeInConcept", {
+    scrollTrigger: ".fadeInConcept", // .boxがビューポート内に入った時にアニメーションが開始。
+    start: "middle center",
+    scrub: 0.5,
+    duration: 1.5,
+    autoAlpha: 0,
+    x: 350,
+    })
+});
+
+onMounted(() => { gsap.from(".fadeInIntroduce", {
+    scrollTrigger: ".fadeInIntroduce", // .boxがビューポート内に入った時にアニメーションが開始。
+    start: "top center",
+    scrub: 0.5,
+    duration: 0.8,
+    autoAlpha: 0,
+    y: 30,
+    })
+});
+
+
+
+//const isLoading:boolean = true;
+//const start = () =>  loading.value = false;
+//const finish = () => loading.value = true;
+
+// mounted: {
+//     window.onload = () => {
+//         const start = () => show.value = true;
+//         const finish = () => show.value = false;
+//         console.log('Hello World!');
+//     }
+// };
+
+//const isVisited = ref(session.value);
+//const isVisited = (e: any) => e.target.onMounted();
+//const refIsVisited = ref(isVisited);
+// const flag = ref(false)
+// const on = () => { flag.value = true }
+// const off = () => { flag.value = false }
+
+// watch(refIsVisited, () => {
+//     setTimeout(on, 0)
+//     setTimeout(off, 3000)
+// })
+
+
+const toNewsDetail = (news: string, id: string) => {
+    navigateTo(`/news/${news.id}`)
+};
+
+const toNewsIndex = () => {
+    navigateTo(`/news/list`)
+};
+
+const toGreeting = () => {
+    navigateTo("/greeting")
+};
+
+const toContact = () => {
+    navigateTo("/contact")
+};
+const toDevelopment = () => {
+    navigateTo("/services")
+}
+
+// const toTop = () => {
+//     goTo(0);
+// }
+// let navDrawerContent = ref()
+// onMounted(()=> {
+//   navDrawerContent.value = 
+//    'myNavDrawer'.$el.querySelector('div.v-navigation-drawer__content');
+// })
+
+// const isShowGoToTopButton = ref(false);
+
+// const onScroll = (event: Event) => {
+//     if (typeof window === 'undefined') {
+//       return;
+//     }
+//     let scrollTop = 0;
+//     if (event.target instanceof HTMLInputElement) {
+//       scrollTop = event.target.scrollTop;
+//     }
+//     const top = window.scrollY || scrollTop || 0;
+//     isShowGoToTopButton.value = top > 20;
+//   }
+
+// const onClickGoToTopButton = () => {
+//     $vuetify.value.goTo(0);
+//   }
+
+// onMounted(() => {(scrollTo, {
+//   container: "body",// スクロールするcontainer
+//   duration: 500, // スクロールアニメーションの長さ（ミリ秒）
+//   easing: "ease", // 使用されるイージング
+//   force: true,   // スクロールターゲットがすでに表示されている場合でも、スクロールを実行するかどうか。
+//   cancelable: false // ユーザーがスクロールをキャンセルできるかどうか
+// })}
+// );
+
+// const toTop = scrollBehavior = (to, from, savedPosition) => {
+//     if (savedPosition) {
+//       return savedPosition;
+//     } else {
+//       return { left: 0, top: 0 };
+//     }
+//   };
+const drawer = ref();
 </script>
 
 <template>
-  <div>
-    <v-sheet min-height="20vh"></v-sheet>
-    <v-container>
-      <v-row>
-        <v-col>
-          <div class="fluid-lead">
-            <h1>
-              <span>with prosper</span>
-                <br>
-              <span>with pleasure</span>
-            </h1>
-          </div>
-        </v-col>
-        <v-col>
-            <div class="fluid"></div>
-            <div class="fluid2"></div>
-        </v-col>
-      </v-row>
-    </v-container>
-    <div class="font2">
-        開発事例
+   <div>
+    <!-- <div class="ma-0 pa-0" style="min-height: 800px;"> -->
+        <!-- <div class="fluid-colorful2"> -->
+            <div class="top-parent" ma-0 pa-0 min-height="800px"></div>
+            <div min-height="30vh">
+                <div class="top-title">
+                    <div class="top-topics top-lead">
+                        <v-divider></v-divider>
+                        <h1>
+                            <span>with prosper</span>
+                                <br>
+                            <span>with pleasure</span>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        <!-- </div> -->
+        <!-- <div class="fluid-base" style="min-height: 300px;"></div> -->
+        <div class="parallax-first" style="min-width: 2000px; min-height: 600px;"></div>
+        <!-- <div class="fluid"></div>
+        <div class="fluid2"></div> -->
+        <!-- </div> -->
+    <div class="fluid-colorful2" style="min-width: 2000px; min-height: 450px;"></div>
+    <div class="niigata-image-container">
+        <!-- <img class="niigata-image" src="~/assets/images/niigata-city.jpg"> -->
+        <div ma-0 pa-0 class="fadeInConcept fluid-lead2 main-font" min-height="300px">
+            <div class="greeting-arrows"></div>
+            <h3><span>ソフトウェア開発会社として地域に根差して30余年</span></h3>
+            <br>
+            <span>これからもお客様の信頼を第一に考え</span>
+            <br>
+            <span>共に喜び共に成長することを志します</span>
+            <div class="niigata-image-container-greeting">
+                <button @click="toGreeting" class="main-button main-font">
+                    <span class="greeting-button">ご挨拶</span><span class="greeting-button">→</span>
+                </button>
+            </div>
+        </div>
     </div>
-      <v-container>
-        <v-carousel
-          cycle
-          height="600"
-          hide-delimiter-background
-          show-arrows="hover"
-        >
-        <div class="heading fadeRightTrigger fadeRight">
-          Concept
+    <div class="parallax" style="min-width: 2000px; min-height: 600px;"></div>
+    
+    <div class="contact-background" style="width: 120%;">
+          <v-sheet class="contact-background" min-height="30px">
+              <div class="topics contact-box">
+                  <h1>
+                      お問い合わせ
+                  </h1>
+              </div>
+          </v-sheet>
+          <div class="contact-background" style="min-height: 300px;">
+              <div class="contact-box">
+                  <span>お仕事のご相談、お見積もりのご依頼など</span>
+                      <br>
+                  <span>お気軽にお問い合わせください</span>
+              </div>
+              <div class="contact-box2">
+                  <button @click="toContact" class="reversal-main-button right-position reversal-main-font">
+                      <span class="greeting-button">Contact</span><span class="greeting-button">→</span>
+                  </button>
+              </div>
+          </div>
+      </div>
+
+
+          <!-- <v-sheet min-height="20vh"></v-sheet>
+          <v-container>
+            <v-row>
+              <v-col>
+                <div class="fluid-lead">
+                  <h1>
+                    <span>with prosper</span>
+                      <br>
+                    <span>with pleasure</span>
+                  </h1>
+                </div>
+              </v-col>
+              <v-col>
+                  <div class="fluid"></div>
+                  <div class="fluid2"></div>
+              </v-col>
+            </v-row>
+          </v-container>
+          <div class="font2">
+              開発事例
+          </div>
+            <v-container>
+              <v-carousel
+                cycle
+                height="600"
+                hide-delimiter-background
+                show-arrows="hover"
+              >
+              <div class="heading fadeRightTrigger fadeRight">
+                Concept
+              </div>
+              <div class="lead fadeRightTrigger fadeRight">
+                いつもそばにずっと
+              </div>
+                <v-carousel-item
+                  v-for="(slide, index) in slides"
+                  :key="index"
+                  :src="slide.src"
+                >
+                  <v-sheet
+                    height="100%"
+                  >
+                  <img :src="`../assets/images/${slide.name}.jpg`" style="width:1200px;height:auto;"/>
+                  </v-sheet>
+                </v-carousel-item>
+              </v-carousel>
+            </v-container> -->
+            <!-- <v-sheet class="news fadeLeftTrigger fadeLeft" min-width="60vh" min-height="30vh" rounded="lg">
+              <h3>　お知らせ</h3>
+              <v-row v-show="data?.contents.length === 0">
+                    記事がありません
+              </v-row>
+              <v-list-item v-for="news in data?.contents" :key="news.id" class='padding'>
+                  <NuxtLink :to="`/news/${news.id}`">
+                    {{ news.category?.name }}
+                  </NuxtLink>
+              </v-list-item>
+            </v-sheet> -->
         </div>
-        <div class="lead fadeRightTrigger fadeRight">
-          いつもそばにずっと
-        </div>
-          <v-carousel-item
-            v-for="(slide, index) in slides"
-            :key="index"
-            :src="slide.src"
-          >
-            <v-sheet
-              height="100%"
-            >
-            <img :src="`../assets/images/${slide.name}.jpg`" style="width:1200px;height:auto;"/>
-            </v-sheet>
-          </v-carousel-item>
-        </v-carousel>
-      </v-container>
-      <v-sheet class="news fadeLeftTrigger fadeLeft" min-width="60vh" min-height="30vh" rounded="lg">
-        <h3>　お知らせ</h3>
-        <v-row v-show="data?.contents.length === 0">
-              記事がありません
-        </v-row>
-        <v-list-item v-for="news in data?.contents" :key="news.id" class='padding'>
-            <NuxtLink :to="`/news/${news.id}`">
-              {{ news.category?.name }}
-            </NuxtLink>
-        </v-list-item>
-      </v-sheet>
-  </div>
 </template>
 
 <style lang="scss" scoped>
