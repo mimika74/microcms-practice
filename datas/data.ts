@@ -1,16 +1,20 @@
-export const links = [ { title: 'ご挨拶', path: '/menu'},
-                       { title: 'アクセス', path: '/menu'},
-                       { title: '決算報告', path: '/'},
-                       { title: '情報セキュリティ基本方針', path: '/'},
-                       { title: '個人情報保護方針', path: '/'},
-                     ];
-export const links2 = [  { title: '新卒採用', path: '/menu'},
-                         { title: '経験者採用', path: '/menu'},
-                      ];
+export const lists = [ {title: "私たちについて", path: "/company"}, 
+                       {title: "ご挨拶", path: "/greeting"}, 
+                    ];
 
-export const slides2 = ["~/assets/images/main_01.jpg", "~/assets/images/main_02.jpg", "~/assets/images/main_03.jpg",];
-export const slides: Array<any> = [
-  { id: "1", name: "main_01" },
-  { id: "2", name: "main_02" },
-  { id: "3", name: "main_03" }
-]
+export const lists2 = [ {title: "採用情報", path: "/recruite"}, 
+                       {title: "エントリー", path: "/recruite/entry"}, 
+                     ];
+
+export const navDrawer = [ {title: "私たちについて", path: "/company"}, 
+                        {title: "サービス", path: "/services"},
+                        {title: "製品", path: "/services"},
+                        {title: "採用情報", path: "/recruite"},
+                        {title: "お問い合わせ", path: "/contact"},
+                        ];
+
+
+export const members = [{ name: "a", data: "b"},
+                        { name: "a", data: "b"},
+                        { name: "a", data: "b"},
+                        ];

@@ -18,23 +18,6 @@ const refForm = ref<Form>({
   privacy: '',
 })
 
-//refForm.value.privacy.toString()
-
-//const privacy = ref();
-// const flag = (privacy: any) => {
-//     if(privacy) {
-//         privacy = true
-//     } else {
-//         privacy = false
-//     }
-//   };
- //console.log(refForm.value.privacy);
-
-//formData.append(runtimeConfig.public.formPrivacy, refForm.value.privacy.toString());
-
-//formData.append(runtimeConfig.public.formSelect, refForm.value.select);
-
-// その他 name="entry.872933283.other_option_response"
 const runtimeConfig = useRuntimeConfig();
 const submitForm = async() => {
   const formId = runtimeConfig.public.formAction;
@@ -61,12 +44,15 @@ const submitTO = () => {
 
 const requiredValidation = (value: any) => !!value || '必ず入力してください'
 const requiredValidation2 = (value: any) => !!value || 'チェックをお願いします。'
-// const nameRules = (value: any) => {
-//   if(value == true){
-//     return '入力必須です。'
-//   }
-// }
 
+
+const items = [ 
+                "aについて",
+                "bについて", 
+                "cについて",
+                "dについて",
+                "その他",
+                ];
 </script>
 
 <template>
@@ -112,19 +98,17 @@ const requiredValidation2 = (value: any) => !!value || 'チェックをお願い
           />
         </div>
         <div>
-          <v-label for="field-name"
-            >お問い合わせの種類<span>必須</span></v-label>
-            <v-radio-group
-              required
-            >
-              <label>DX支援全般について</label>
-              <input type="radio" label="DX支援全般について" value="DX支援全般について" v-model="refForm.select" />
-              <label>アプリ開発について</label>
-              <input type="radio" label="アプリ開発について" value="アプリ開発について" v-model="refForm.select" />
-              <label>その他</label>
-              <input type="radio" label="その他" value="その他" v-model="refForm.select" />
-            </v-radio-group>
-             {{refForm.select}}
+          <v-label for="field-name">お問い合わせの種類</v-label>
+          <!-- <v-checkbox label="aについて" v-model="refForm.select" value="aについて" type="checkbox" />
+          <v-checkbox label="bについて" v-model="refForm.select" value="bについて" type="checkbox" />
+          <v-checkbox label="cについて" v-model="refForm.select" value="cについて" type="checkbox" />
+          <v-checkbox label="dについて" v-model="refForm.select" value="dについて" type="checkbox" />
+          <v-checkbox label="その他" v-model="refForm.select" value="その他" type="checkbox" /> -->
+          <v-select
+              v-model="refForm.select"
+              :items="items"
+              variant="outlined"
+              ></v-select>
         </div>
         <div>
           <v-label for="field-message">お問い合わせ内容</v-label>
@@ -136,11 +120,28 @@ const requiredValidation2 = (value: any) => !!value || 'チェックをお願い
             maxlength="1000"
             required />
         </div>
-        <div>
-          <v-checkbox :rules="[requiredValidation2]" type="checkbox" v-model="refForm.privacy" value="同意します" label="プライバシーポリシーに同意する" required></v-checkbox>
+        <div class="parent">
+            <div class="privacy-label">
+                <NuxtLink to="/privacy">プライバシーポリシー</NuxtLink>を確認し、個人情報の取り扱いについて同意します。
+            </div>
         </div>
-        <div>
-          <v-btn type="submit">送信する</v-btn>
+        <div style="margin-bottom: 60px;">
+            <v-checkbox
+                class="child"
+                v-model="refForm.privacy"
+                :rules="[requiredValidation2]"
+                value="同意します。"
+                type="checkbox"
+                required
+                variant="outlined"
+                on-icon="mdi-check-circle-outline"
+                />
+                <div class="privacy-label" style="margin-left:50px;">
+                    同意します。
+                </div>
+        </div>
+        <div class="form-button" style="text-align: center;">
+            <button type="submit" :disabled="!refForm.privacy" class="contact-button" name="button">送信する</button>
         </div>
       </form>
     </v-sheet>
