@@ -14,3 +14,12 @@ jobs:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_MICROCMS_PRACTICE }}"
           projectId: microcms-practice
+      - name: Install Dependencies
+        run: yarn
+      - name: Build
+        run: |
+          yarn build
+          yarn generate
+      - name: deploy to Firease Hosting
+        run: |
+          firebase deploy
