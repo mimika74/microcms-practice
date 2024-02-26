@@ -132,7 +132,7 @@ const isActive =ref(true)
                         <div><img style="width: 100%; heght: auto;" src="~/assets/images/sample.png" /></div>
                     </v-col>
                     <v-col>
-                        <div><img  style="width: 100%; heght: auto;" src="~/assets/images/sample2.png" /></div>
+                        <div><img  style="width: 100%; heght: auto;" src="~/assets/images/25038056_s.png" /></div>
                     </v-col>
                 </v-row>
             </div>
