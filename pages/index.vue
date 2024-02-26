@@ -95,9 +95,9 @@ const isActive =ref(true)
             <div class="company-message main-font">
                     <h3><span>main message</span></h3>
                         <br>
-                    <span>いつもそばに<br>ずっと</span>
+                    <span>company<br>messeage</span>
                         <br>
-                    <span>All the time forever<br>We're here</span>
+                    <span>test<br>test</span>
                     <div>
                         <button @click="toGreeting" class="reversal-main2-button">
                             <span style="font-weight: blod;">ご挨拶</span><v-icon>mdi-arrow-right-thin</v-icon>
@@ -109,7 +109,7 @@ const isActive =ref(true)
             <div min-height="100px">
                 <div class="contents-title main-font" style="width: 80%;">
                     <h1 style="color: #e5abbe;">
-                        eeeee
+                        Product
                     </h1>
                 </div>
             </div>
