@@ -6,14 +6,11 @@
       "firebase-debug.log",
       "firebase-debug.*.log"
     ],
-    "predeploy": "npm --prefix \"$RESOURCE_DIR\" run build"
+    "predeploy": "npm --prefix \"$RESOURCE_DIR\" run build",
+    "source": "functions"
   },
   "hosting": {
     "public": ".output/public",
-    "rewrites": [ {
-      "source": "**",
-      "destination": "/index.html"
-      } ],
     "ignore": [
       "firebase.json",
       "**/.*",
